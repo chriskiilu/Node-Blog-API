@@ -1,0 +1,42 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Blog boilerplate",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test mocha './tests/*test.js'",
+    "start": "node server.js"
+  },
+  "author": "Chris Kiilu",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.11.4",
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
+    "fs": "^0.0.2",
+    "mongodb": "^2.2.5",
+    "mongoose": "^4.5.8",
+    "multer": "^1.1.0",
+    "pg-promise": "^5.2.7",
+    "pug": "^2.0.0-beta4",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "request": "^2.74.0",
+    "sinon": "^1.17.4"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chriskiilu/Node-Blog-API.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chriskiilu/Node-Blog-API/issues"
+  },
+  "homepage": "https://github.com/chriskiilu/Node-Blog-API#readme"
+}
