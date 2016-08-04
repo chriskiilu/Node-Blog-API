@@ -2,15 +2,28 @@ doctype html
 html
 	head
 		title Landing Page
+		link(href='css/bootstrap.min.css', rel='stylesheet')
+		link(href='css/app.css', rel='stylesheet')
 
 	body
-		p.
-			Testing Content
-		div
-		for user in users
-			h1.
-				#{user.name}
-			p.
-				#{user.email}
+		div.container
+			div.row
+				div.col-md-6
+				div.col-md-6
+				form(action="/api/users", method="POST")
+					label.
+						Name: 
+					input(type='text',required, name="name")
+					label.
+						Email: 
+					input(type='email',required, name="email")
+					label.
+						Password: 
+					input(type='password',required, name="password1")
+					label.
+						Password: 
+					input(type='password',required, name="password2")
+					input(type='submit').btn.btn-default
 			
 
+		script(type="text/javascript",src="js/validator.min.js")
