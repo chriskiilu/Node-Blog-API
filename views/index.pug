@@ -1,29 +1,7 @@
-doctype html
-html
-	head
-		title Landing Page
-		link(href='css/bootstrap.min.css', rel='stylesheet')
-		link(href='css/app.css', rel='stylesheet')
-
-	body
-		div.container
-			div.row
-				div.col-md-6
-				div.col-md-6
-				form(action="/api/users", method="POST")
-					label.
-						Name: 
-					input(type='text',required, name="name")
-					label.
-						Email: 
-					input(type='email',required, name="email")
-					label.
-						Password: 
-					input(type='password',required, name="password1")
-					label.
-						Password: 
-					input(type='password',required, name="password2")
-					input(type='submit').btn.btn-default
-			
-
-		script(type="text/javascript",src="js/validator.min.js")
+extends base
+block content	
+	div.container
+		div.row
+			div.col-sm-8#posts
+			div.col-sm-4.
+				Links

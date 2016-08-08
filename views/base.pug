@@ -1,0 +1,52 @@
+doctype html
+html
+	head
+		title Landing Page
+		link(href="//cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css", rel="stylesheet")
+		link(href='css/bootstrap.min.css', rel='stylesheet')
+		link(href='css/app.css', rel='stylesheet')
+
+	body
+		div(class="off-canvas-wrapper")
+			div(class="off-canvas-wrapper-inner", data-off-canvas-wrapper)
+				div(class="off-canvas position-left", id="offCanvas", data-off-canvas)
+					//- Close Button
+					button(class="close-button", aria-label="Close menu", type="button", data-close)
+						span(aria-hidden="true").
+							&times;
+
+					//- Menu
+					ul(class="vertical menu")
+						li
+							a(href="#").
+								Foundation
+						li
+							a(href="#").
+								Dot
+						li
+							a(href="#").
+								ZURB
+						li
+							a(href="#").
+								Com
+						li
+							a(href="#").
+								Slash
+						li
+							a(href="#").
+								Sites
+
+				//- Page content
+				div(class="off-canvas-content", data-off-canvas-content)
+					button(type="button", class="button", data-toggle="offCanvas") Open Menu
+					block content
+			
+
+		script(src="//cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js")
+		//- script(src="//cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js")
+		script(type="text/javascript",src="js/validator.min.js")
+		script(src="js/index.jsx", type="text/babel")

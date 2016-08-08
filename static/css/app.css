@@ -2,6 +2,11 @@ body {
   margin: 0;
   padding: 0;
 }
-div.login {
-  margin: 0 auto;
+div.nav {
+  background: #000;
+  margin: 0;
+  padding: 15px;
+}
+div.nav a {
+  color: #fff;
 }
