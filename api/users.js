@@ -62,7 +62,7 @@ router.route('/:user_id')
 				if(err){
 					res.end(err);
 				} else {
-					res.end('User created');
+					res.end('User updated');
 				}
 			})
 		})
@@ -74,7 +74,7 @@ router.route('/:user_id')
 			if(err){
 				res.end(err);
 			} else {
-				res.end('User created');
+				res.end('User deleted');
 			}
 
 		})

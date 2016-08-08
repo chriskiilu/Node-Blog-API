@@ -2,6 +2,9 @@ var express = require('express')
 	,router = express.Router()
 	,models = require('../models/models')
 	,emailCheck = require('email-check')
+	,path = require('path')
+	,multer = require('multer')
+	,upload = multer({dest: './media/'})
 
 router.use(function(req,res,next){
 	next();
@@ -9,72 +12,67 @@ router.use(function(req,res,next){
 
 router.route('/')
 	.get(function(req,res){
-		models.User.find(function(err, users){
+		models.Post.find(function(err, posts){
 			if (err) {
 				res.end(err);
 			} else {
-				users = { 
-					users: users
+				posts = { 
+					posts: posts
 				}
-				res.json(users)
+				res.json(posts)
 			}
 		});
 	})
-	.post(function(req,res){
-		if(req.body.password1 !== req.body.password2){
-		 res.end('Passwords do not match.');
-		}
-		emailCheck(req.body.email)
-			.then(function(emailRes){
-				var user = new models.User({
-					name: req.body.name,
-					email: req.body.email,
-					password: req.body.password1
-				});
-				user.save(function(err){
-					if(err){
-						res.end(err);
-					} else {
-						res.end('User created');
-					}
-				});
-			})
-			.catch(function(err){
-				if (err.message === 'refuse') {
-			      // The MX server is refusing requests from your IP address. 
-			      res.end('Your email address has an invalid domain')
-			    } else {
-			      res.end('Invalid Email Address!')
-			    }
+	.post(upload.array('files'), function(req,res){
+		var data = {
+			title: req.body.title,
+			content: req.body.content,
+			author: req.body.author,
+			timestamp: new Date(),
+		};
+		if(req.files){
+			var filepath = req.files.map(function(file,index,files){
+				return file.path;
 			});
+			data.files = filepath;
+		}
+
+		var post = new models.Post(data);
+		post.save(function(err){
+			if(err){
+				res.end(err);
+			} else {
+				res.json(post)
+			}
+		});
 	})
 router.route('/:post_id')
 	.get(function(req,res){
-		models.User.findById(req.params.user_id, function(err, user){
-			res.json(user)
+		models.Post.findById(req.params.post_id, function(err, post){
+			res.json(post)
 		})
 	})
 	.put(function(req, res){
-		models.User.findById(req.params.user_id, function(err, user){
-			user.name = req.body.name;
-			user.email = req.body.email;
-			user.save(function(err){
+		models.Post.findById(req.params.post_id, function(err, post){
+			post.title = req.body.title;
+			post.content = req.body.content;
+			post.save(function(err){
 				if(err){
 					res.end(err);
 				} else {
-					res.end('User created');
+					res.send('Post updated');
 				}
 			})
 		})
 	})
 	.delete(function(req,res){
-		models.User.remove({
-			_id: req.params.user_id
-		}, function(err, user){
+		models.Post.remove({
+			_id: req.params.post_id
+		}, function(err, post){
 			if(err){
 				res.end(err);
 			} else {
-				res.end('User created');
+				res.end('Post deleted');
 			}
 
 		})
