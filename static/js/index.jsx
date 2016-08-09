@@ -58,6 +58,6 @@ var PostContainer = React.createClass({
 });
 
 ReactDOM.render(
-	<PostContainer url="/api/posts" pollInterval={5000}/>,
+	<PostContainer url="/api/v1/posts" pollInterval={5000}/>,
 	document.getElementById('posts')
 	);

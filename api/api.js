@@ -1,13 +1,11 @@
 var express = require('express')
 	,router = express.Router()
-	,users = require('./users')
-	,posts = require('./posts')
 
 router.use(function(req,res,next){
 	next();
 });
 
-router.use('/users', users)
-router.use('/posts', posts)
+router.use('/users', require('./users'))
+router.use('/posts', require('./posts'))
 
 module.exports = router;

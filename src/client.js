@@ -1,13 +1,11 @@
 var express = require('express')
 	,router = express.Router()
-	,index = require('./index')
-	,media = require('./media')
 
 router.use(function(req,res,next){
 	next();
 });
 
-router.use('/', index)
-router.use('/media', media)
+router.use('/', require('./index'))
+router.use('/media', require('./media'))
 
 module.exports = router;

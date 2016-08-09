@@ -6,6 +6,7 @@ var conn = mongoose.connection;
 // Grid.mongo = mongoose.mongo;
 // var gridfs = Grid(conn.db);
 var userSchema = mongoose.Schema({	
+		username: String,
 		name: String,
 		email: String,
 		password: String
